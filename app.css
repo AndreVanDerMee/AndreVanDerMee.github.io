@@ -9,6 +9,7 @@ body, html {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
+    background-color: rgb(16, 208, 208);
 }
 
 .container {
