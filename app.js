@@ -1,7 +1,3 @@
-function alertButton(){
-    alert("My name is Andre!")
-}
-
 function checkInput() {
     var input = document.getElementById('secretInput').value.toLowerCase();
     if (input === "poops") {
