@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <link rel="stylesheet" href="app.css"/>
-    <title>Document Title</title>
-    
+    <title>Drag and Drop Box</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
 </head>
-
 <body>
-    <div class="container">
-        <input type="password" id="secretInput" placeholder="Enter our Nickname">
-        <button onclick="checkInput()">Submit</button>
+<div id="container">
+    <h1>OK 01</h1>
+    <div class="ok"></div>
+</div>
+<div id="container">
+    <h1>OK 02</h1>
+    <div class="ok"></div>
+</div>
+<div id="container">
+    <h1>OK 03</h1>
+    <div class="ok"></div>
+</div>
+<div id="container">
+    <h1>OK 04</h1>
+    <div class="ok"></div>
+</div>
+<div id="container">
+    <h1>OK 05</h1>
+    <div class="ok"></div>
+</div>
+<div id="container">
+    <h1>Alle namen</h1>
+    <div id="names">
+        <div class="list" draggable="true"> Daniel</div>
+        <div class="list" draggable="true"> Andre</div>
+        <div class="list" draggable="true"> Miranda</div>
+        <div class="list" draggable="true"> Carlos</div>
     </div>
-</body>
+</div>
+<button onclick="addBox()">Add Box</button>
 
 <script src="app.js"></script>
-
+</body>
 </html>
