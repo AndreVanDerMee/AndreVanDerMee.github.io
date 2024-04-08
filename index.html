@@ -5,23 +5,31 @@
     <link rel="stylesheet" type="text/css" href="app.css">
 </head>
 <body>
-<div id="OKS"></div>
+    <div id="columns">
+        <div id="OKS"></div>
+        <div id="reserve_ziek">
+            <div id="reserve">
+                <h1>Reserve</h1>
+                <div class="extra">
+                    <div class="list" draggable="true"> Andre</div>
+                    <div class="list" draggable="true"> Miranda</div>
 
-<div class="container">
-    <h1>Reserve</h1>
-    <div id="names">
-        
-        <div class="list" draggable="true"> Andre</div>
-        <div class="list" draggable="true"> Miranda</div>
-        <div class="list" draggable="true"> Carlos</div>
+                </div>
+            </div>
+            <div id="ziek">
+                <h1>Ziek</h1>
+                <div class="extra">
+                    <div class="list" draggable="true"> Carlos</div>
+                </div>
+            </div>
+        </div>
+        <div id="zoek">
+            <h1>Search name</h1>
+            <input type="text" id="zoek-input" oninput="filterNames()">
+            <div id="zoek-result"></div>
+            <script src="search.js"></script>
+        </div>
     </div>
-</div>
-<div class="container">
-    <h1>Ziek</h1>
-    <div class="ok">
-    </div>
-</div>
-<button onclick="addBox()">Add Box</button>
 
 <script src="app.js"></script>
 </body>

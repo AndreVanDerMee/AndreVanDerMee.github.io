@@ -2,32 +2,45 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
-.container{
+#columns{
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.ok{
     width: 750px;
     height: 60%;
-    background: #ff424288;
+    background: #9ba4f888;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    border: 2px dashed #4c00ff;
 }
 h1{
     margin: 10px, 5px;
 }
-
-.ok, #names{
+.ok-content{
     width: 600px;
     height: 40px;
     min-height: 100%;
     margin: 5px;
-    border: 2px dashed #4c00ff;
+    border: 2px solid #4c00ff;
     display: flex;
 }
+#names{
+    width: 600px;
+    height: 40px;
+    min-height: 100%;
+    margin: 5px;
+    border: 2px solid #4c00ff;
+    display: flex;
+}
+
 .list{
-    background: #000000;
-    height: 35px;
+    background: #fd0000;
+    height: 30px;
     width: 75px;
     margin: 5px;
     color: #fff;
@@ -35,4 +48,58 @@ h1{
     justify-content: center;
     align-items: center;
     cursor: grab;
+}
+#reserve_ziek{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    position: absolute; /* Positions the div independently from other elements */
+    top: 0px; /* Pushes the div to the top of the screen */
+    left: 750px; /* Ensures it starts from the very left side of the screen */
+}
+
+#reserve, #ziek, #zoek{
+    background: #9ba4f888;
+    width: 250px;
+    height: 100%;
+    margin: 10px;
+    margin-top: 0px;
+    border: 2px solid #4c00ff;
+}
+.extra{
+    width: 75%;
+    height: 75%;
+    margin: 20px;
+
+    border: 2px solid #4c00ff;
+    display: flex;
+    flex-direction: column;
+}
+
+#reserve h1, #ziek h1, #zoek h1{
+    margin: 20px;
+}
+#zoek{
+    position: absolute;
+    top: 0px;
+    left: 1000px;
+    margin-left: 20px;
+    width: 250px;
+    height: 41.5%;
+}
+#zoek-input {
+    margin: 10px;
+    margin-top: 0px;
+    width: 90%;
+    height: 40px;
+    border: 2px solid #4c00ff;
+    font-size: large;
+}
+#zoek-result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
