@@ -10,7 +10,7 @@
         <div id="reserve_ziek">
             <div id="reserve">
                 <h1>Reserve</h1>
-                <div class="extra">
+                <div class="extra" id="extrabox">
                     <div class="list" draggable="true"> Andre</div>
                     <div class="list" draggable="true"> Miranda</div>
 
@@ -18,19 +18,19 @@
             </div>
             <div id="ziek">
                 <h1>Ziek</h1>
-                <div class="extra">
+                <div class="extra" id="ziekbox">
                     <div class="list" draggable="true"> Carlos</div>
                 </div>
             </div>
         </div>
         <div id="zoek">
             <h1>Search name</h1>
-            <input type="text" id="zoek-input" oninput="filterNames()">
+            <input type="text" id="zoek-input" oninput="filterNames(), filter()">
             <div id="zoek-result"></div>
-            <script src="search.js"></script>
         </div>
     </div>
-
-<script src="app.js"></script>
+    <script>src="create_ok.js"</script>
+    <script src="search.js"></script>
+    <script src="app.js"></script>    
 </body>
 </html>

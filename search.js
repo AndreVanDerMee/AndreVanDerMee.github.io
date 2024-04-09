@@ -1,4 +1,11 @@
 const names = ["Andre", "Miranda", "Carlos", "Andrea", "Miran", "Carlos Mendes"];
+for (let i = 0; i < Math.min(filteredNames.length, 5); i++) {
+        const div = document.createElement("div");
+        div.textContent = filteredNames[i];
+        div.classList.add("list");
+        div.draggable = true;
+        searchResults.appendChild(div);
+    }
 function filterNames() {
     const searchInput = document.getElementById("zoek-input");
     const searchResults = document.getElementById("zoek-result");

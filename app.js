@@ -1,3 +1,5 @@
+let draggedItem = null;
+
 let container = document.getElementById("OKS");
 for (let i = 1; i <= 21; i++) {
     let div = document.createElement("div");
@@ -16,18 +18,19 @@ for (let i = 1; i <= 21; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    let draggedItem = null;
+    filter();
+});
+
+function filter(){
+  draggedItem = null;
   
     // Target draggable items in .extra, .ok-content, and .zoek-results containers
-    const draggableItems = document.querySelectorAll('.extra div, .ok-content div, .zoek-results div');
+    const draggableItems = document.querySelectorAll('.list');
+    console.log(draggableItems);
     draggableItems.forEach((item) => {
       item.addEventListener('dragstart', function(e) {
         draggedItem = this;
-        setTimeout(() => this.classList.add('dragging'), 0); // Visual cue
-      });
-  
-      item.addEventListener('dragend', function(e) {
-        setTimeout(() => this.classList.remove('dragging'), 0); // Remove visual cue
+        console.log('Dragging:', draggedItem);
       });
     });
   
@@ -45,10 +48,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
       });
     });
-  });
-  
-  
+}
 
+//q: when i drop a div it keep the dragging class, how can i remove it?
+//A: You can remove the dragging class by using the classList.remove() method. For example, this.classList.remove('dragging');
+//q: what does domcontentloaded do?
+//A: The DOMContentLoaded event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
 
 // q: what is the difference between an id and a class and how do you use them?
 // A: An id is unique to an element, meaning that it can only be used once in the document. A class can be used multiple times. You can use them by selecting them using document.getElementById() and document.getElementsByClassName() respectively.
