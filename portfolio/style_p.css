@@ -64,7 +64,7 @@ a:hover {
     display: none;
 }
 .hamburger-menu {
-    position: flex;
+    position: relative;
     display: inline-block;
 }
 .hamburger-icon{
