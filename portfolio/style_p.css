@@ -317,6 +317,10 @@ section{
     border-color: rgb(163, 163, 163);
 }
 
+.article-container{
+    height: 400px;
+}
+
 /* CONTACT */
 
 #contact {
@@ -355,4 +359,14 @@ section{
   
   .email-icon {
     height: 2.5rem;
+  }
+
+  /* extra */
+.sep{
+    content: "";
+    display: block;
+    height: 1px;
+    background-image: repeating-linear-gradient(to right, #ccc, #ccc 3px, transparent 1px, transparent 5px);
+    width: 100%;
+    margin: 20px 0;
   }
