@@ -5,21 +5,27 @@
     font-family: 'Roboto', sans-serif;
 }
 #columns{
-    display: inline-flex;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
+.OKS{
+    width: 50vw;
+}
+
 .ok{
-    width: 750px;
-    height: 60%;
     background: #9ba4f888;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    height: calc(99vh / 21);
+    padding: 5px;
 }
-h1{
-    margin: 10px, 5px;
+h2{
+    display: flex;
+    align-items: center;
 }
 .ok-content{
     width: 600px;
@@ -54,41 +60,58 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 85%;
-    position: absolute; /* Positions the div independently from other elements */
-    top: 0px; /* Pushes the div to the top of the screen */
-    left: 750px; /* Ensures it starts from the very left side of the screen */
+    height: 99vh;
 }
 
 #reserve, #ziek, #zoek{
     background: #9ba4f888;
     width: 250px;
-    height: 100%;
-    margin: 10px;
-    margin-top: 0px;
+    height: 50%;
     border: 2px solid #4c00ff;
+}
+
+#reserve{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#ziek{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .extra{
     width: 75%;
     height: 75%;
     margin: 20px;
-
     border: 2px solid #4c00ff;
     display: flex;
     flex-direction: column;
 }
 
+.extra .list{
+    display: flex;
+    align-items: center;
+}
+
 #reserve h1, #ziek h1, #zoek h1{
-    margin: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
 }
 #zoek{
-    position: absolute;
-    top: 0px;
-    left: 1000px;
-    margin-left: 20px;
-    width: 250px;
-    height: 41.5%;
+    height: 49vh;
+    margin-bottom: 50vh;
 }
+
+#zoek_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #zoek-input {
     margin: 10px;
     margin-top: 0px;
