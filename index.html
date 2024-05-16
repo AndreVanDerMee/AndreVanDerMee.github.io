@@ -5,7 +5,14 @@
     <link rel="stylesheet" type="text/css" href="app.css">
 </head>
 <body>
-    <div id="columns">
+    <div id="zoek">
+        <div id="zoek_flex">
+            <h2>Search name</h1>
+        <input type="text" id="zoek-input" oninput="filterNames(), filter()">
+        </div>
+        <div id="zoek-result"></div>
+    </div>
+    <div id="Chirugie">
         <div id="OKS"></div>
         <div id="reserve_ziek">
             <div id="reserve">
@@ -23,17 +30,10 @@
                 </div>
             </div>
         </div>
-        <div id="zoek_content">
-            <div id="zoek">
-                <h1>Search name</h1>
-                <input type="text" id="zoek-input" oninput="filterNames(), filter()">
-                <div id="zoek-result"></div>
-            </div>
-        </div>
     </div>
     <button id="editButton">Edit</button>
     <button id="saveButton" style="display: none;">Save</button>
-    
+
     <script src="create_ok.js"></script>
     <script src="search.js"></script>
     <script src="app.js"></script>

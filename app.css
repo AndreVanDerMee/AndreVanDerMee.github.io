@@ -4,15 +4,51 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
-#columns{
+h2{
+    display: flex;
+    align-items: center;
+}
+#zoek{
+    height: 10vh;
+    width: 33vw;
+}
+#zoek_flex{
+    display: flex;
+}
+#zoek_flex h2{
+    margin: 10px;
+}
+#zoek-input {
+    margin: 10px;
+    width: 80%;
+    height: 40px;
+    border: 2px solid #4c00ff;
+    font-size: large;
+}
+#zoek_content{
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    justify-content: center;
+}
+
+#zoek-result{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15%;
+}
+#Chirugie{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+    width: 33vw;
+    border: #fd0000;
 }
-.OKS{
-    width: 50vw;
+#OKS{
+    width: 80%;
+    height: 90vh;
 }
 
 .ok{
@@ -20,15 +56,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: calc(99vh / 21);
+    height: calc(80vh / 24);
     padding: 5px;
 }
-h2{
-    display: flex;
-    align-items: center;
-}
+
 .ok-content{
-    width: 600px;
+    width: 65%;
     height: 40px;
     min-height: 100%;
     margin: 5px;
@@ -46,9 +79,10 @@ h2{
 
 .list{
     background: #fd0000;
-    height: 30px;
-    width: 75px;
+    height: 40px;
+    width: 100px;
     margin: 5px;
+    font-size: 1.5rem;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -60,12 +94,12 @@ h2{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 99vh;
+    height: 89vh;
+    width: 20%;
 }
 
 #reserve, #ziek, #zoek{
     background: #9ba4f888;
-    width: 250px;
     height: 50%;
     border: 2px solid #4c00ff;
 }
@@ -81,7 +115,6 @@ h2{
     margin-right: 10px;
 }
 .extra{
-    width: 75%;
     height: 75%;
     margin: 20px;
     border: 2px solid #4c00ff;
@@ -99,32 +132,6 @@ h2{
     text-align: center;
     justify-content: center;
     margin: 10px;
-}
-#zoek{
-    height: 49vh;
-    margin-bottom: 50vh;
-}
-
-#zoek_content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#zoek-input {
-    margin: 10px;
-    margin-top: 0px;
-    width: 90%;
-    height: 40px;
-    border: 2px solid #4c00ff;
-    font-size: large;
-}
-#zoek-result{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .hidden{

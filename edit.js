@@ -18,35 +18,32 @@ document.getElementById('editButton').addEventListener('click', function() {
         select.classList.add('editable-select');
         header.replaceWith(select);
     });
-
     // Handle .editable_time class
     const times = document.querySelectorAll('h2.editable_time');
     times.forEach(time => {
         const currentValue = time.innerText;
-        const currentHour = currentValue.split(":")[0];
+        const currentHour = currentValue.split(":")[0].trim().substring(2);
         const currentMinute = currentValue.split(":")[1];
         const hourSelect = document.createElement('select');
         const minuteSelect = document.createElement('select');
 
-        // Generate hour options 00 to 23
-        for (let hour = 0; hour < 24; hour++) {
-            const optionValue = String(hour).padStart(2, '0');
+        // Generate minute options "00", "15", "30", "45"
+        const hourOptions = ["08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+        hourOptions.forEach(optionValue => {
             const option = document.createElement('option');
             option.value = optionValue;
             option.innerText = optionValue;
             hourSelect.appendChild(option);
-        }
-        
-        // Generate minute options 00 to 59
-        for (let minute = 0; minute < 60; minute++) {
-            const optionValue = String(minute).padStart(2, '0');
-            console.log(optionValue)
+        });      
+        // Generate minute options "00", "15", "30", "45"
+        const minuteOptions = ["00", "15", "30", "45"];
+        minuteOptions.forEach(optionValue => {
             const option = document.createElement('option');
             option.value = optionValue;
             option.innerText = optionValue;
             minuteSelect.appendChild(option);
-        }
-
+        });
+        console.log(currentHour);
         hourSelect.value = currentHour;
         minuteSelect.value = currentMinute;
         hourSelect.classList.add('editable-hour-select');
@@ -59,6 +56,7 @@ document.getElementById('editButton').addEventListener('click', function() {
         
         time.replaceWith(container);
     });
+
 
     this.style.display = 'none';
     document.getElementById('saveButton').style.display = 'inline';

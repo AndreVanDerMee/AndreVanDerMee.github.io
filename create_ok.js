@@ -1,6 +1,7 @@
-let times = new Array(21); times.fill("16:30");
+let times = new Array(24); times.fill("16:30");
 let okArray = Array.from({ length: 21 }, (_, i) => `OK ${String(i + 1).padStart(2, '0')}`);
-let units = Array.from({ length: 21 }, () => `unit ${Math.floor(Math.random() * 5) + 1}`);
+okArray.push("OK 26", "OK C", "OK D")
+let units = Array.from({ length: 24 }, () => `unit ${Math.floor(Math.random() * 5) + 1}`);
 
 let combinedArray = units.map((unit, index) => ({
     unit,
@@ -17,7 +18,7 @@ okArray = combinedArray.map(item => item.ok);
 times = combinedArray.map(item => item.time);
 
 let container = document.getElementById("OKS");
-for (let i = 0; i < 21; i++) {
+for (let i = 0; i < 24; i++) {
     let div = document.createElement("div");
     div.className = "ok";
     
