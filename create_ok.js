@@ -23,9 +23,11 @@ for (let i = 0; i < 21; i++) {
     
     let h1 = document.createElement("h2");
     h1.textContent = okArray[i]
-    
+    h1.className = "editable"
+
     let time = document.createElement("h2");
     time.textContent = ", " + times[i]
+    time.className = "editable_time"
 
     let unit = document.createElement("h2");
     unit.textContent = ", " + units[i]

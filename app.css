@@ -126,3 +126,13 @@ h2{
     align-items: center;
     justify-content: center;
 }
+
+.hidden{
+    display: none;
+}
+#editButton, 
+#saveButton{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
