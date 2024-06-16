@@ -47,7 +47,7 @@ function createSession(session_id, time, spec, unit, ok) {
     };
 };
 var data = [];
-function update_session(){
+function create_data(){
     data = [];
     for (let i = 0; i < session_ids.length; i++) {
         data.push(createSession(session_ids[i], times[i], specs[i], units[i], oks[i]));
@@ -65,5 +65,5 @@ function sort(){
     return data;
 };
 
-update_session();
+create_data();
 sort();
