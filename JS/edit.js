@@ -24,7 +24,6 @@ function edit(){
 
         const time_option = document.querySelectorAll('.time');
         time_option.forEach(time_option => {
-            console.log(time_option);
             const currentValue = time_option.innerText;
             const currentHour = currentValue.split(":")[0].trim();
             const currentMinute = currentValue.split(":")[1];
@@ -111,6 +110,8 @@ function save(){
         create();
         edit();
         save();
+        makeDraggable();
+        makeDropZones();
     });
 };
 edit();
