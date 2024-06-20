@@ -30,6 +30,7 @@ function create_main() {
 
     const reserveContainerDiv = document.createElement('div');
     reserveContainerDiv.id = 'Reserve_container';
+    reserveContainerDiv.className = 'Reserve';
 
     reserveDiv.appendChild(reserveP);
     reserveDiv.appendChild(reserveContainerDiv);
@@ -43,6 +44,7 @@ function create_main() {
 
     const ziekContainerDiv = document.createElement('div');
     ziekContainerDiv.id = 'Ziek_container';
+    ziekContainerDiv.className = 'Ziek';
 
     ziekDiv.appendChild(ziekP);
     ziekDiv.appendChild(ziekContainerDiv);
