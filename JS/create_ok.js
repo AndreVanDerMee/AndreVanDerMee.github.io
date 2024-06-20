@@ -24,12 +24,6 @@ function update_ok(){
         time.classList.add("time");
         time.id = "time" + data[i].session_id;
 
-        let unit = document.createElement("p");
-        unit.textContent = data[i].unit;
-        unit.className = data[i].session_id;
-        unit.classList.add("unit");
-        unit.id = "unit" + data[i].session_id;
-
         let specs = document.createElement("p");
         specs.textContent = data[i].spec;
         specs.className = data[i].session_id;
@@ -44,12 +38,11 @@ function update_ok(){
         
         div.appendChild(ok_num);
         div.appendChild(time);
-        div.appendChild(unit);
         div.appendChild(specs);
         div.appendChild(innerDiv);
         
         container.appendChild(div);
     } 
 }
-update_ok();
+
 

@@ -31,6 +31,8 @@ var lookupTable = [
     { sessie_label: "PYN", unit: "Unit 5" },
     { sessie_label: "SPOED", unit: "SPOED" }
 ];
+var sessieLabels = lookupTable.map(item => item.sessie_label);
+
 var session_ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X"];
 var times = new Array(24); times.fill("16:30");
 var specs = ["CHI Vaat", "CHI", "CTC", "SPOED", "GON", "KNO", "GYN", "CTC", "NCH", "ORT", "URO", "CHI", "CTC", "NCH", "OOG", "CTC", "PLA", "ORT", "URO", "URO db", "KAA", "TRAU", "CHI db", "PYN"]
@@ -65,5 +67,3 @@ function sort(){
     return data;
 };
 
-create_data();
-sort();

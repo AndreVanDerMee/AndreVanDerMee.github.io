@@ -31,8 +31,7 @@ function update_people(){
             document.getElementById("Reserve_container").appendChild(div);
         }
         else{
-            document.getElementsByClassName(person.Session)[5].appendChild(div);
+            document.getElementsByClassName(person.Session)[4].appendChild(div);
         }
     });
 }
-update_people();
