@@ -31,17 +31,17 @@ function makeDropZones() {
             zone.appendChild(draggableElement);
             console.log(zone.classList[2]);
             console.log(draggableElement.textContent);
-            if (zone.classList.length > 2) {
+            if (zone.classList.length == 3) {
                 people.find(p => p.Name === draggableElement.textContent).Session = zone.classList[2];
+            }
+            else if (zone.classList.length == 4) {
+                people.find(p => p.Name === draggableElement.textContent).Session = zone.classList[3];
             }
             else {
                 people.find(p => p.Name === draggableElement.textContent).Session = zone.classList[0];
             };
             create();
-            edit();
-            save();
-            makeDraggable();
-            makeDropZones();
+            func();
         });
     });
 }

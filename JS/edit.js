@@ -108,11 +108,6 @@ function save(){
             units[session_id] = lookupTable.find(item => item.sessie_label === spec_option.value).unit;
         });
         create();
-        edit();
-        save();
-        makeDraggable();
-        makeDropZones();
+        func();
     });
 };
-edit();
-save();

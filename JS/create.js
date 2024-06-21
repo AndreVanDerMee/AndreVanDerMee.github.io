@@ -7,8 +7,3 @@ function create(){
     update_people();
 }
 create();
-
-console.log("B".charCodeAt(0) - 65);
-
-
-// edit should not delete but just hide

@@ -9,7 +9,7 @@ function createPerson(name, session) {
 };
 
 var names = ["Andre", "Brian", "Cathy", "David", "Edward", "Frank", "George", "Harry", "Irene", "Jane"];
-var sessions = ["Ziek", "Reserve", "A", "A", "B", "B", "B", "C", "D", "D"];
+var sessions = ["Ziek", "Reserve", "H", "H", "F", "F", "F", "C", "D", "D"];
 
 
 for (let i = 0; i < names.length; i++) {
