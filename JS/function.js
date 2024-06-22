@@ -3,5 +3,6 @@ function func(){
     save();
     makeDraggable();
     makeDropZones();
+
 };
 func();

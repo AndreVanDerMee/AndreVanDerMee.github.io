@@ -1,3 +1,4 @@
+var lookupPerson = ["Jan", "Piet", "Joris", "Korneel", "Klaas", "Kees", "Karel", "Koos", "willian", "Wim", "Wouter", "Maria", "Amber", "Anouk", "Suzan", "Sanne", "Sofie", "Sara", "Sandra", "Sylvia", "Saskia", "Samantha", "Bas", "Bram"];
 var lookupTable = [
     { sessie_label: "CHI", unit: "Unit 1" },
     { sessie_label: "CHI Vaat", unit: "Unit 1" },

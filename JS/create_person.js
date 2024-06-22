@@ -15,6 +15,9 @@ var sessions = ["Ziek", "Reserve", "H", "H", "F", "F", "F", "C", "D", "D"];
 for (let i = 0; i < names.length; i++) {
     people.push(createPerson(names[i], sessions[i]));
 }
+for (let i = 0; i < lookupPerson.length; i++) {
+    people.push(createPerson(lookupPerson[i], "data"));
+}
 function update_people(){
     people.forEach(person => {
         let div = document.createElement("div");

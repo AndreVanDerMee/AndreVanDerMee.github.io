@@ -27,10 +27,10 @@ function makeDropZones() {
         zone.addEventListener('drop', function(event) {
             event.preventDefault();
             const id = event.dataTransfer.getData('text');
+            console.log("id", id);
             const draggableElement = document.getElementById(id);
+            console.log("draggableElement", draggableElement);
             zone.appendChild(draggableElement);
-            console.log(zone.classList[2]);
-            console.log(draggableElement.textContent);
             if (zone.classList.length == 3) {
                 people.find(p => p.Name === draggableElement.textContent).Session = zone.classList[2];
             }

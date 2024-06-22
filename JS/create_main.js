@@ -13,9 +13,14 @@ function create_main() {
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.id = 'Search_input';
+    searchInput.oninput = function() { filterNames(); };
+
+    const searchResults = document.createElement('div');
+    searchResults.id = 'Search_result';
 
     searchDiv.appendChild(searchP);
     searchDiv.appendChild(searchInput);
+    
 
     // Create the OKS section
     const oksDiv = document.createElement('div');
@@ -61,6 +66,7 @@ function create_main() {
 
     // Append all sections to the main container
     chirugieDiv.appendChild(searchDiv);
+    chirugieDiv.appendChild(searchResults);
     chirugieDiv.appendChild(oksDiv);
     chirugieDiv.appendChild(reserveDiv);
     chirugieDiv.appendChild(ziekDiv);

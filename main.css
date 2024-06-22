@@ -1,12 +1,16 @@
 body{
     font-family: Arial, sans-serif;
+    background-color: #86d2ec;
+    font-size: 2em;
 }
 #Chirugie{
     width: 33vw;
-    height: 100vh;
+    height: 98vh;
+    margin: auto 0px;
+    border: black 1px solid;
     display:grid;
     grid-template-columns: 25% 25% 30% 20%;
-    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 5% 5% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
 }
 #Search{
     grid-column-start: 1;
@@ -26,12 +30,27 @@ body{
     font-size: 1.5vw;
     border-radius: 10px;
 }
+#Search_result{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    background-color: #86d2ec;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    height: 80%;
+
+    display: flex;
+}
 
 #OKS{
     grid-column-start: 1;
     grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 10;
+    grid-row-start: 3;
+    grid-row-end: 11;
     
     height: 100%;
     width: 100%;
@@ -54,7 +73,7 @@ body{
 .ok_content{
     width: 60%;
     height: 80%;
-    margin: 5px;
+    margin: auto 5px;
     border: 1px solid black;
     background-color: #e1ecf1;
     display: flex;
@@ -79,8 +98,8 @@ body{
 #Reserve{
     grid-column-start: 4;
     grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 7;
 
     background-color: #86d2ec;
 }
@@ -104,8 +123,8 @@ body{
 #Ziek{
     grid-column-start: 4;
     grid-column-end: 5;
-    grid-row-start: 6;
-    grid-row-end: 10;
+    grid-row-start: 7;
+    grid-row-end: 11;
 
     background-color: #86d2ec;
 }
@@ -163,8 +182,8 @@ body{
 #Edit, #Save{
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 10;
-    grid-row-end: 11;
+    grid-row-start: 11;
+    grid-row-end: 12;
     width: 100px;
     height: 25px;
     margin: 10px 0;
