@@ -13,7 +13,7 @@ function create_main() {
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.id = 'Search_input';
-    searchInput.oninput = function() { filterNames(); };
+    searchInput.oninput = function() { func(); };
 
     const searchResults = document.createElement('div');
     searchResults.id = 'Search_result';

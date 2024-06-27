@@ -16,7 +16,7 @@ function makeDraggable() {
 }
 // Function to make drop zones handle drops
 function makeDropZones() {
-    const dropZones = document.querySelectorAll('.ok_content, #Reserve_container, #Ziek_container');
+    const dropZones = document.querySelectorAll('.ok_content, #Reserve_container, #Ziek_container, #Search_result');
 
     dropZones.forEach(zone => {
         zone.addEventListener('dragover', function(event) {
@@ -30,8 +30,11 @@ function makeDropZones() {
             console.log("id", id);
             const draggableElement = document.getElementById(id);
             console.log("draggableElement", draggableElement);
-            zone.appendChild(draggableElement);
-            if (zone.classList.length == 3) {
+            //zone.appendChild(draggableElement);
+            if (zone.classList.length == 0) {
+                people.find(p => p.Name === draggableElement.textContent).Session = zone.id;
+            }
+            else if (zone.classList.length == 3) {
                 people.find(p => p.Name === draggableElement.textContent).Session = zone.classList[2];
             }
             else if (zone.classList.length == 4) {

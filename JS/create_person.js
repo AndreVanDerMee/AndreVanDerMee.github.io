@@ -16,7 +16,7 @@ for (let i = 0; i < names.length; i++) {
     people.push(createPerson(names[i], sessions[i]));
 }
 for (let i = 0; i < lookupPerson.length; i++) {
-    people.push(createPerson(lookupPerson[i], "data"));
+    people.push(createPerson(lookupPerson[i], "Search_result"));
 }
 function update_people(){
     people.forEach(person => {
@@ -32,6 +32,9 @@ function update_people(){
         /*if ok_ids == Reserve append to #Reserve */
         else if (person.Session.includes("Reserve")) {
             document.getElementById("Reserve_container").appendChild(div);
+        }
+        else if (person.Session.includes("Search_result")) {
+            document.getElementById("Search_result").appendChild(div);
         }
         else{
             document.getElementsByClassName(person.Session)[4].appendChild(div);
