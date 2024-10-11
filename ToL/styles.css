@@ -45,6 +45,10 @@ body, html {
     text-align: right;
 }
 
+#inp{
+    display: flex;
+}
+
 #user-input {
     border: none;
     padding: 15px;
