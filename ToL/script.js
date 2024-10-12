@@ -1,6 +1,5 @@
 // script.js
-require('dotenv').config();
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.SECRET_KEY;
 
 const chatBox = document.getElementById('chat-box');
 const userInput = document.getElementById('user-input');
