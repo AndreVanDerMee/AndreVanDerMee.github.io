@@ -1,5 +1,6 @@
 // script.js
-const apiKey = ""
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
 
 const chatBox = document.getElementById('chat-box');
 const userInput = document.getElementById('user-input');
@@ -62,7 +63,7 @@ async function fetchStoryFromChatGPT(input) {
 
 // Present story continuation options
 function presentStoryOptions() {
-    const options = ['Option 1: Continue with A', 'Option 2: Continue with B', 'Option 3: Continue with C'];
+    const options = ['Option 1', 'Option 2', 'Option 3'];
     options.forEach(option => addMessage('AI', option));
     userInput.disabled = false;
     sendButton.disabled = false;
