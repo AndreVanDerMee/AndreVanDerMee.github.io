@@ -57,38 +57,20 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Animate elements on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe feature cards and project cards
-document.querySelectorAll('.feature-card, .project-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-    observer.observe(card);
-});
-
 // Horizontal scroll for projects with mouse drag
 const projectsContainer = document.querySelector('.projects-scroll-container');
 if (projectsContainer) {
     let isDown = false;
     let startX;
     let scrollLeft;
+    let hasMoved = false;
 
     projectsContainer.addEventListener('mousedown', (e) => {
+        // Don't start drag if clicking on a link or button
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        
         isDown = true;
+        hasMoved = false;
         projectsContainer.style.cursor = 'grabbing';
         startX = e.pageX - projectsContainer.offsetLeft;
         scrollLeft = projectsContainer.scrollLeft;
@@ -107,10 +89,18 @@ if (projectsContainer) {
     projectsContainer.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
+        hasMoved = true;
         const x = e.pageX - projectsContainer.offsetLeft;
         const walk = (x - startX) * 2;
         projectsContainer.scrollLeft = scrollLeft - walk;
     });
+    
+    // Prevent click on links if dragged
+    projectsContainer.addEventListener('click', (e) => {
+        if (hasMoved && e.target.closest('a')) {
+            e.preventDefault();
+        }
+    }, true);
 }
 
 // Horizontal scroll for team with mouse drag
@@ -119,9 +109,14 @@ if (teamContainer) {
     let isDown = false;
     let startX;
     let scrollLeft;
+    let hasMoved = false;
 
     teamContainer.addEventListener('mousedown', (e) => {
+        // Don't start drag if clicking on a link or button
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        
         isDown = true;
+        hasMoved = false;
         teamContainer.style.cursor = 'grabbing';
         startX = e.pageX - teamContainer.offsetLeft;
         scrollLeft = teamContainer.scrollLeft;
@@ -140,10 +135,18 @@ if (teamContainer) {
     teamContainer.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
+        hasMoved = true;
         const x = e.pageX - teamContainer.offsetLeft;
         const walk = (x - startX) * 2;
         teamContainer.scrollLeft = scrollLeft - walk;
     });
+    
+    // Prevent click on links if dragged
+    teamContainer.addEventListener('click', (e) => {
+        if (hasMoved && e.target.closest('a')) {
+            e.preventDefault();
+        }
+    }, true);
 }
 
 // Arrow navigation for scrollable sections
@@ -286,6 +289,25 @@ window.addEventListener('load', () => {
     if (heroTitle) {
         heroTitle.style.animation = 'fadeInUp 1s ease-out';
     }
+});
+
+// Section scroll animations
+const sectionObserverOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, sectionObserverOptions);
+
+// Observe all sections except hero
+document.querySelectorAll('section:not(.hero)').forEach(section => {
+    sectionObserver.observe(section);
 });
 
 console.log('LAIXR website loaded successfully!');
