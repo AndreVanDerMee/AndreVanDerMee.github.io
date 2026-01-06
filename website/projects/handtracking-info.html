@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Handtracking System - LAIXR</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .handtracking-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .handtracking-hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: 20%;
+            left: 10%;
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .handtracking-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .handtracking-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .handtracking-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray-text);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-text);
+        }
+
+        @media (max-width: 768px) {
+            .handtracking-title {
+                font-size: 2.5rem;
+            }
+
+            .handtracking-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <h1>LAIXR</h1>
+                <p class="brand-tagline">Leiden AI XR Research Group</p>
+                <p class="brand-subtitle">LEIDEN UNIVERSITAIR MEDISCH CENTRUM</p>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="handtracking-hero">
+        <div class="handtracking-content">
+            <h1 class="handtracking-title">AI Handtracking System</h1>
+            <p class="handtracking-subtitle">Advanced computer vision and machine learning system for real-time surgical hand movement tracking and technique assessment</p>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">21</div>
+                    <div class="stat-label">Hand Landmarks</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features-section">
+                <div class="feature-card">
+                    <h3>Real-Time Tracking</h3>
+                    <p>Track 21 hand landmarks per hand in real-time using advanced MediaPipe technology, providing precise movement analysis for surgical training and assessment.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Gesture Recognition</h3>
+                    <p>Automatically recognize and classify surgical hand gestures and techniques, enabling objective assessment of surgical skill and proficiency levels.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Movement Analysis</h3>
+                    <p>Detailed analysis of hand movements, including velocity, trajectory, and precision metrics to identify areas for improvement in surgical technique.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Multi-Hand Support</h3>
+                    <p>Simultaneous tracking of both hands allows for comprehensive analysis of bimanual surgical procedures and coordination assessment.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Performance Metrics</h3>
+                    <p>Generate detailed performance reports with quantitative metrics on hand steadiness, movement efficiency, and surgical technique execution.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Training Feedback</h3>
+                    <p>Provide immediate visual feedback during training sessions, helping surgeons identify and correct technique issues in real-time.</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Experience Live Hand Tracking</h2>
+                <p>See our AI handtracking system in action with your own webcam</p>
+                <div class="cta-buttons">
+                    <a href="handtracking.html" class="btn btn-primary">Try Live Demo</a>
+                    <a href="../index.html#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>

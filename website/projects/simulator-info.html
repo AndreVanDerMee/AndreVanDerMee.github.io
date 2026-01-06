@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surgical Training Simulator - LAIXR</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .simulator-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .simulator-hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: 20%;
+            right: 10%;
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .simulator-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .simulator-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .simulator-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray-text);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-text);
+        }
+
+        .tech-stack {
+            margin-bottom: 4rem;
+        }
+
+        .tech-stack h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--light-text);
+        }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .tech-badge {
+            padding: 0.75rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 25px;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tech-badge:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .simulator-title {
+                font-size: 2.5rem;
+            }
+
+            .simulator-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <h1>LAIXR</h1>
+                <p class="brand-tagline">Leiden AI XR Research Group</p>
+                <p class="brand-subtitle">LEIDEN UNIVERSITAIR MEDISCH CENTRUM</p>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="simulator-hero">
+        <div class="simulator-content">
+            <h1 class="simulator-title">ECMO Surgical Training Simulator</h1>
+            <p class="simulator-subtitle">Experience cutting-edge virtual reality training for cardiothoracic surgery with our state-of-the-art ECMO simulation platform</p>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1200+</div>
+                    <div class="stat-label">Surgeons Trained</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Availability</div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features-section">
+                <div class="feature-card">
+                    <h3>Realistic ECMO Procedures</h3>
+                    <p>High-fidelity 3D models of ECMO equipment and anatomy provide an immersive training experience that mirrors real-world surgical scenarios.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Interactive Controls</h3>
+                    <p>Intuitive VR controls allow surgeons to manipulate equipment, practice procedures, and develop muscle memory in a safe environment.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Performance Analytics</h3>
+                    <p>Track progress, receive real-time feedback, and analyze performance metrics to continuously improve surgical skills and techniques.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>AI-Powered Guidance</h3>
+                    <p>Machine learning algorithms provide personalized coaching, identify areas for improvement, and adapt training to individual skill levels.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Repeatable Scenarios</h3>
+                    <p>Practice complex procedures unlimited times without risk to patients, building confidence and competence before entering the OR.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Multi-User Training</h3>
+                    <p>Collaborate with fellow surgeons in shared virtual environments, facilitating team training and communication skills development.</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Experience the Future?</h2>
+                <p>Explore our interactive 3D ECMO model and see the technology in action</p>
+                <div class="cta-buttons">
+                    <a href="simulator.html" class="btn btn-primary">View 3D Model</a>
+                    <a href="../index.html#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>

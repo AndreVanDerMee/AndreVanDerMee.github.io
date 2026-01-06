@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Pain Relief Demo - LAIXR</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .vr-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: var(--darker-bg);
+        }
+
+        .video-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #player {
+            width: 100%;
+            height: 100%;
+        }
+
+        .overlay-info {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+            animation: fadeOut 5s forwards;
+        }
+
+        @keyframes fadeOut {
+            0%, 80% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        .overlay-info h3 {
+            color: var(--primary-color);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .overlay-info p {
+            color: var(--gray-text);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-overlay .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand-simple {
+            text-decoration: none;
+            color: var(--light-text);
+        }
+
+        .nav-brand-simple h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-link {
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-brand-simple h1 {
+                font-size: 1.2rem;
+            }
+
+            .back-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .overlay-info {
+                left: 1rem;
+                right: 1rem;
+                transform: none;
+                padding: 0.75rem 1rem;
+            }
+
+            .overlay-info h3 {
+                font-size: 1rem;
+            }
+
+            .overlay-info p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-overlay">
+        <div class="container">
+            <a href="vr-pain-relief-info.html" class="nav-brand-simple">
+                <h1>LAIXR - VR Pain Relief</h1>
+            </a>
+            <a href="vr-pain-relief-info.html" class="back-link">← Back</a>
+        </div>
+    </div>
+
+    <div class="overlay-info">
+        <h3>360° VR Experience</h3>
+        <p>Click and drag to look around • Use WASD keys to navigate</p>
+    </div>
+
+    <div class="vr-container">
+        <div class="video-wrapper">
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <script>
+        // YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: 'S854BESqlbQ',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 1,
+                    'modestbranding': 1,
+                    'rel': 0,
+                    'showinfo': 0,
+                    'fs': 1,
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Video is ready to play
+            event.target.playVideo();
+        }
+
+        // Prevent page scroll
+        document.body.style.overflow = 'hidden';
+    </script>
+</body>
+</html>

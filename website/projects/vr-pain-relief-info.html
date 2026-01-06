@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Pain Relief - LAIXR</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .vr-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vr-hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: 20%;
+            right: 10%;
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .vr-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vr-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .vr-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray-text);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray-text);
+        }
+
+        @media (max-width: 768px) {
+            .vr-title {
+                font-size: 2.5rem;
+            }
+
+            .vr-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">
+                <h1>LAIXR</h1>
+                <p class="brand-tagline">Leiden AI XR Research Group</p>
+                <p class="brand-subtitle">LEIDEN UNIVERSITAIR MEDISCH CENTRUM</p>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li><a href="../index.html#publications">Publications</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="vr-hero">
+        <div class="vr-content">
+            <h1 class="vr-title">Virtual Reality Pain Relief</h1>
+            <p class="vr-subtitle">Immersive VR experiences designed to reduce patient anxiety and pain during medical procedures through distraction therapy and relaxation techniques</p>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">45%</div>
+                    <div class="stat-label">Pain Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Patients Treated</div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="features-section">
+                <div class="feature-card">
+                    <h3>Immersive Distraction</h3>
+                    <p>360-degree immersive environments transport patients away from clinical settings, reducing focus on pain and anxiety during procedures.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Relaxation Therapy</h3>
+                    <p>Calming natural environments and guided breathing exercises help patients achieve a relaxed state, naturally reducing pain perception.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Patient Comfort</h3>
+                    <p>Non-invasive pain management solution that complements traditional methods, improving overall patient experience and satisfaction.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Reduced Medication</h3>
+                    <p>Effective distraction therapy can reduce the need for pain medication, minimizing side effects and recovery time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Evidence-Based</h3>
+                    <p>Backed by clinical research demonstrating significant reductions in pain scores and anxiety levels during medical procedures.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Easy Implementation</h3>
+                    <p>Simple, portable VR solution that can be easily integrated into existing clinical workflows without major infrastructure changes.</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Experience the Calming Environment</h2>
+                <p>Preview the immersive 360° VR experience used for patient pain relief</p>
+                <div class="cta-buttons">
+                    <a href="vr-pain-relief.html" class="btn btn-primary">View 360° Demo</a>
+                    <a href="../index.html#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>
