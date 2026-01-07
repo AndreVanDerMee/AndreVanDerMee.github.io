@@ -408,13 +408,13 @@ body {
 
 .projects-slider {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 0 1rem;
     min-width: min-content;
 }
 
 .project-card {
-    flex: 0 0 400px;
+    flex: 0 0 350px;
     background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
@@ -432,7 +432,7 @@ body {
 
 .project-image {
     width: 100%;
-    height: 250px;
+    height: 220px;
     background-size: cover;
     background-position: center;
 }
@@ -468,12 +468,12 @@ body {
 }
 
 .project-content {
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .project-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
     color: var(--light-text);
 }
 
@@ -589,13 +589,13 @@ body {
 
 .team-slider {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 0 1rem;
     min-width: min-content;
 }
 
 .team-member {
-    flex: 0 0 400px;
+    flex: 0 0 320px;
     background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
@@ -613,7 +613,7 @@ body {
 
 .member-image {
     width: 100%;
-    height: 350px;
+    height: 320px;
     background-size: cover;
     background-position: center;
 }
@@ -641,9 +641,8 @@ body {
     background-size: cover;
     background-position: center;
 }
-
 .member-img-5 {
-    background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800');
+    background-image: url('images/people/bram.jpg');
     background-size: cover;
     background-position: center;
 }
