@@ -341,9 +341,26 @@ body {
     position: relative;
 }
 
+.projects .container {
+    position: relative;
+}
+
+.projects .scroll-arrow {
+    top: 60%;
+}
+
+.team .container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.team .scroll-arrow {
+    top: 55%;
+}
+
 .scroll-arrow {
     position: absolute;
-    top: 50%;
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
@@ -358,6 +375,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    border: 2px solid var(--primary-color);
+    line-height: 1;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 .scroll-arrow:hover {
@@ -369,10 +391,12 @@ body {
 
 .scroll-arrow-left {
     left: 10px;
+    padding-left: 2px;
 }
 
 .scroll-arrow-right {
     right: 10px;
+    padding-right: 2px;
 }
 
 .projects-scroll-container {
@@ -492,7 +516,17 @@ body {
     text-align: center;
     color: var(--gray-text);
     font-size: 0.9rem;
-    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.projects .scroll-indicator {
+    margin-top: -1rem;
+}
+
+.team .scroll-indicator {
+    margin-bottom: 1rem;
+    order: 10;
 }
 
 /* Old features grid styles removed - replaced with projects */
