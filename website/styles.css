@@ -525,8 +525,7 @@ body {
 }
 
 .team .scroll-indicator {
-    margin-bottom: 1rem;
-    order: 10;
+    margin-top: -1rem;
 }
 
 /* Old features grid styles removed - replaced with projects */
