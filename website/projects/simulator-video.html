@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surgical Training Simulator - LAIXR</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 100;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            z-index: 101;
+        }
+
+        .back-btn:hover {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        #video-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            padding-bottom: 100px;
+        }
+
+        #video-player {
+            max-width: 90%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .video-switcher {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .video-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .video-btn:hover:not(:disabled) {
+            background: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .video-btn.active {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .video-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .spinner {
+            border: 4px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50%;
+            border-top: 4px solid #3b82f6;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .video-switcher {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+
+            .video-btn {
+                width: 100%;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            #video-player {
+                max-width: 95%;
+                max-height: 75vh;
+            }
+
+            .back-btn {
+                top: 1.2rem;
+                right: 1rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ECMO Surgical Training Simulator</h1>
+    </div>
+    
+    <a href="simulator-info.html" class="back-btn">← Back</a>
+
+    <div id="video-container">
+        <video id="video-player" controls autoplay loop>
+            <source src="../assets/ECMO_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="loading" id="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p style="color: var(--gray-text);">Loading video...</p>
+    </div>
+
+    <div class="video-switcher">
+        <button class="video-btn active" id="ecmo-btn" onclick="switchVideo('ecmo')">ECMO Video</button>
+        <button class="video-btn" id="ecc-btn" onclick="switchVideo('ecc')" disabled>ECC Video (Coming Soon)</button>
+    </div>
+
+    <script>
+        const videoPlayer = document.getElementById('video-player');
+        const ecmoBtn = document.getElementById('ecmo-btn');
+        const eccBtn = document.getElementById('ecc-btn');
+        const loading = document.getElementById('loading');
+
+        const videos = {
+            ecmo: '../assets/ECMO_video.mp4',
+            ecc: '../assets/ECC_video.mp4'
+        };
+
+        function switchVideo(type) {
+            if (type === 'ecc') {
+                // Check if ECC video exists
+                checkVideoExists(videos.ecc).then(exists => {
+                    if (exists) {
+                        loadVideo(type);
+                    } else {
+                        alert('ECC video is not available yet. Coming soon!');
+                    }
+                });
+            } else {
+                loadVideo(type);
+            }
+        }
+
+        function loadVideo(type) {
+            loading.style.display = 'block';
+            const wasPlaying = !videoPlayer.paused;
+            
+            videoPlayer.src = videos[type];
+            videoPlayer.load();
+            
+            videoPlayer.addEventListener('loadeddata', function() {
+                loading.style.display = 'none';
+                if (wasPlaying) {
+                    videoPlayer.play();
+                }
+            }, { once: true });
+
+            // Update button states
+            ecmoBtn.classList.toggle('active', type === 'ecmo');
+            eccBtn.classList.toggle('active', type === 'ecc');
+        }
+
+        function checkVideoExists(url) {
+            return fetch(url, { method: 'HEAD' })
+                .then(response => response.ok)
+                .catch(() => false);
+        }
+
+        // Check if ECC video exists on page load
+        checkVideoExists(videos.ecc).then(exists => {
+            if (exists) {
+                eccBtn.disabled = false;
+                eccBtn.textContent = 'ECC Video';
+            }
+        });
+    </script>
+</body>
+</html>
