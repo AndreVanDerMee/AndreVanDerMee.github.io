@@ -636,6 +636,8 @@ body {
     transition: all 0.3s;
     position: relative;
     scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
 }
 
 .team-member:hover {
@@ -655,6 +657,9 @@ body {
 
 .member-content {
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .member-content p {
@@ -674,6 +679,43 @@ body {
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 0.95rem;
+}
+
+.member-text {
+    color: var(--gray-text);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.team-member.expanded .member-text {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
+}
+
+.see-more-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0;
+    margin-top: auto;
+    display: block;
+    transition: all 0.3s;
+}
+
+.see-more-btn:hover {
+    color: #60a5fa;
+    text-decoration: underline;
 }
 
 /* Publications Section */

@@ -3,13 +3,13 @@ const teamMembers = [
     {
         name: "Dr. Edris Mahtab",
         role: "Principal Investigator",
-        text: "Dr. Mahtab leads our research in AI-driven surgical assistance. With over 20 years of experience in cardiothoracic surgery and medical technology, he pioneered several innovative XR training systems.",
+        text: "Dr. Mahtab Received a fellowship grant for the LUMC in 2023 and founded LAIXR. He leads our research in AI-driven surgical assistance. With over 20 years of experience in cardiothoracic surgery and medical technology, he pioneered several innovative XR training systems.",
         image: "edris.png"
     },
     {
         name: "Dr. Samuel Max",
         role: "ANIOS and Senior Researcher",
-        text: "Dr. Max specializes creating a digital twin of cardiothoracic surgery patients. He posseses knowlowdge on both enginering and the medical field",
+        text: "Dr. Max founded LAIXR together with Edris Mahtab and specializes creating a digital twin of cardiothoracic surgery patients. He posseses knowlowdge on both enginering and the medical field",
         image: "sam.jpg"
     },
     {
@@ -41,6 +41,12 @@ const teamMembers = [
         role: "PhD-candidate",
         text: "Mounir holds a degree in Medical Natural Sciences and is currently a medical doctor in training, while also pursuing a PhD in cardiothoracic surgery at LAIXR. His work is situated at the intersection of clinical medicine and artificial intelligence, with a focus on translating advanced computational methods into meaningful clinical applications.",
         image: "mounir.jpg"
+    },
+    {
+        name: "MSc. Laurent Coopmans",
+        role: "Technical Physician",
+        text: "Laurent studied Technical Medicine, a joint-degree between TU Delft, LUMC, and Erasmus MC. With this interdisciplinary background, he focuses on applied research and the implementation of innovative technologies in cardiothoracic surgery.",
+        image: "laurent.jpg"
     }
 ];
 
@@ -49,16 +55,36 @@ function generateTeamMembers() {
     const teamSlider = document.querySelector('.team-slider');
     if (!teamSlider) return;
     
-    teamSlider.innerHTML = teamMembers.map(member => `
-        <div class="team-member">
+    teamSlider.innerHTML = teamMembers.map((member, index) => `
+        <div class="team-member" data-index="${index}">
             <div class="member-image" style="background-image: url('images/people/${member.image}'); background-size: cover; background-position: center;"></div>
             <div class="member-content">
                 <h3>${member.name}</h3>
                 <p class="member-role">${member.role}</p>
-                <p>${member.text}</p>
+                <p class="member-text" data-index="${index}">${member.text}</p>
+                <button class="see-more-btn" data-index="${index}">See more</button>
             </div>
         </div>
     `).join('');
+    
+    // Add click handlers for see more buttons - expand/collapse all cards together
+    document.querySelectorAll('.see-more-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const allTeamMembers = document.querySelectorAll('.team-member');
+            const allButtons = document.querySelectorAll('.see-more-btn');
+            const firstMember = allTeamMembers[0];
+            
+            if (firstMember.classList.contains('expanded')) {
+                // Collapse all
+                allTeamMembers.forEach(member => member.classList.remove('expanded'));
+                allButtons.forEach(button => button.textContent = 'See more');
+            } else {
+                // Expand all
+                allTeamMembers.forEach(member => member.classList.add('expanded'));
+                allButtons.forEach(button => button.textContent = 'See less');
+            }
+        });
+    });
 }
 
 // Initialize team members when DOM is loaded
