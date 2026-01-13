@@ -1,3 +1,73 @@
+// Team Members Data
+const teamMembers = [
+    {
+        name: "Dr. Edris Mahtab",
+        role: "Principal Investigator",
+        text: "Dr. Mahtab leads our research in AI-driven surgical assistance. With over 20 years of experience in cardiothoracic surgery and medical technology, he pioneered several innovative XR training systems.",
+        image: "edris.png"
+    },
+    {
+        name: "Dr. Samuel Max",
+        role: "ANIOS and Senior Researcher",
+        text: "Dr. Max specializes creating a digital twin of cardiothoracic surgery patients. He posseses knowlowdge on both enginering and the medical field",
+        image: "sam.jpg"
+    },
+    {
+        name: "MSc Daniel van der Mee Mendes",
+        role: "Data Scientist",
+        text: "Daniel's background is in both Aviation Operations Applied Data Science. His focus at LAIXR is to create machine learning and AI models to have responsive virtual reality environments to enhance training for medical experts.",
+        image: "daniel.png"
+    },
+    {
+        name: "MSc Andre van der Mee Mendes",
+        role: "AI Engineer",
+        text: "Andre has been working as an Artificial Intelligence (AI) engineer for LAIXR since 2023. Here he works on simulating the ECMO and ECC in a virtual environment for educational purposes.",
+        image: "andre.jpg"
+    },
+    {
+        name: "MSc Bram Schalkwijk",
+        role: "Technical Physician",
+        text: "Bram joined LAIXR in 2025. He has a background in Technical Medicine, combining engineering with clinical practice. At LAIXR, he works on the development of a virtual reality training simulator for extracorporeal membrane oxygenation (ECMO), with a focus on patient physiology and the implementation of training scenarios.",
+        image: "bram.jpg"
+    },
+    {
+        name: "Drs. Morsal Atazadah",
+        role: "PhD-candidate",
+        text: "Morsal joined LAIXR in 2024 and she has a background in medicine. At LAIXR, she focuses on describing the learning curves of surgical residents including objective assessment such as handtracking. Furthermore, she works on a virtual reality simulator for the training of scrub nurses.",
+        image: "morsal.jpg"
+    },
+    {
+        name: "BSc. Mounir Bourass",
+        role: "PhD-candidate",
+        text: "Mounir holds a degree in Medical Natural Sciences and is currently a medical doctor in training, while also pursuing a PhD in cardiothoracic surgery at LAIXR. His work is situated at the intersection of clinical medicine and artificial intelligence, with a focus on translating advanced computational methods into meaningful clinical applications.",
+        image: "mounir.jpg"
+    }
+];
+
+// Generate team member cards
+function generateTeamMembers() {
+    const teamSlider = document.querySelector('.team-slider');
+    if (!teamSlider) return;
+    
+    teamSlider.innerHTML = teamMembers.map(member => `
+        <div class="team-member">
+            <div class="member-image" style="background-image: url('images/people/${member.image}'); background-size: cover; background-position: center;"></div>
+            <div class="member-content">
+                <h3>${member.name}</h3>
+                <p class="member-role">${member.role}</p>
+                <p>${member.text}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Initialize team members when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', generateTeamMembers);
+} else {
+    generateTeamMembers();
+}
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');

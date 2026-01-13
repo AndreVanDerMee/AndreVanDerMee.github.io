@@ -651,40 +651,7 @@ body {
     background-position: center;
 }
 
-.member-img-1 {
-    background-image: url('images/people/edris.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.member-img-2 {
-    background-image: url('images/people/sam.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.member-img-3 {
-    background-image: url('images/people/daniel.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.member-img-4 {
-    background-image: url('images/people/andre.jpg');
-    background-size: cover;
-    background-position: center;
-}
-.member-img-5 {
-    background-image: url('images/people/bram.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.member-img-6 {
-    background-image: url('images/people/morsal.jpg');
-    background-size: cover;
-    background-position: center;
-}
+/* Individual member images are now set dynamically via JavaScript */
 
 .member-content {
     padding: 2rem;
