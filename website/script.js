@@ -13,19 +13,19 @@ const teamMembers = [
         image: "sam.jpg"
     },
     {
-        name: "MSc Daniel van der Mee Mendes",
+        name: "MSc. Daniel van der Mee Mendes",
         role: "Data Scientist",
-        text: "Daniel's background is in both Aviation Operations Applied Data Science. His focus at LAIXR is to create machine learning and AI models to have responsive virtual reality environments to enhance training for medical experts.",
+        text: "Daniel's background is in both Aviation Operations and Applied Data Science. His focus at LAIXR is to create machine learning and AI models to have responsive virtual reality environments to enhance training for medical experts.",
         image: "daniel.png"
     },
     {
-        name: "MSc Andre van der Mee Mendes",
+        name: "MSc. Andre van der Mee Mendes",
         role: "AI Engineer",
-        text: "Andre has been working as an Artificial Intelligence (AI) engineer for LAIXR since 2023. Here he works on simulating the ECMO and ECC in a virtual environment for educational purposes.",
+        text: "Andre has been working as an Artificial Intelligence (AI) engineer for LAIXR since 2023. Here he works on simulating the ECMO and ECC in a virtual environment for educational purposes. He also works on AI models to assist heart surgeons in their decision-making process.",
         image: "andre.jpg"
     },
     {
-        name: "MSc Bram Schalkwijk",
+        name: "MSc. Bram Schalkwijk",
         role: "Technical Physician",
         text: "Bram joined LAIXR in 2025. He has a background in Technical Medicine, combining engineering with clinical practice. At LAIXR, he works on the development of a virtual reality training simulator for extracorporeal membrane oxygenation (ECMO), with a focus on patient physiology and the implementation of training scenarios.",
         image: "bram.jpg"
