@@ -687,6 +687,7 @@ body {
     margin-bottom: 0.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -696,6 +697,7 @@ body {
 .team-member.expanded .member-text {
     display: block;
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     -webkit-box-orient: unset;
     overflow: visible;
 }

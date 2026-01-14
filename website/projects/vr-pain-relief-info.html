@@ -34,6 +34,22 @@
             50% { transform: scale(1.2); opacity: 0.8; }
         }
 
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .vr-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -211,6 +227,11 @@
             <h1 class="vr-title">Virtual Reality Pain Relief</h1>
             <p class="vr-subtitle">Immersive VR experiences designed to reduce patient anxiety and pain during medical procedures through distraction therapy and relaxation techniques</p>
 
+            <!-- Video Player -->
+            <div class="video-container" id="videoContainer">
+                <iframe id="luxrVideo" width="100%" height="506" src="https://www.youtube.com/embed/z4rt5Gc_Vp0?enablejsapi=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
             <!-- Stats -->
             <div class="stats-grid">
                 <div class="stat-item">
@@ -269,5 +290,96 @@
     </section>
 
     <script src="../script.js"></script>
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // Floating player on scroll (YouTube version)
+        const videoContainer = document.getElementById('videoContainer');
+        const iframe = document.getElementById('luxrVideo');
+        const PIP_TRIGGER_POINT = 800;
+        let isFloating = false;
+        let isTransitioning = false;
+        let player;
+        let isPlaying = false;
+
+        // Minimal or no transition
+        videoContainer.style.transition = 'none';
+        iframe.style.transition = 'none';
+
+        // Initialize YouTube player
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('luxrVideo', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        // Track play/pause state
+        function onPlayerStateChange(event) {
+            // YT.PlayerState.PLAYING = 1, YT.PlayerState.PAUSED = 2
+            isPlaying = (event.data === 1);
+            
+            // If paused while floating, return to normal position
+            if (!isPlaying && isFloating) {
+                returnToNormal();
+            }
+        }
+
+        function returnToNormal() {
+            videoContainer.style.position = '';
+            videoContainer.style.top = '';
+            videoContainer.style.bottom = '';
+            videoContainer.style.right = '';
+            videoContainer.style.left = '';
+            videoContainer.style.width = '';
+            videoContainer.style.maxWidth = '';
+            videoContainer.style.zIndex = '';
+            videoContainer.style.boxShadow = '';
+            iframe.style.height = '506px';
+            isFloating = false;
+        }
+
+        // Make it globally accessible for API
+        window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
+        window.addEventListener('scroll', () => {
+            if (isTransitioning) return;
+            
+            const scrollPosition = window.scrollY || window.pageYOffset;
+            
+            // Scrolled down past trigger → Make floating (only if playing)
+            if (scrollPosition > PIP_TRIGGER_POINT && !isFloating && isPlaying) {
+                isTransitioning = true;
+                
+                // Save current scroll position
+                const currentScroll = scrollPosition;
+                
+                videoContainer.style.position = 'fixed';
+                videoContainer.style.top = 'auto';
+                videoContainer.style.bottom = '20px';
+                videoContainer.style.right = '20px';
+                videoContainer.style.left = 'auto';
+                videoContainer.style.width = '400px';
+                videoContainer.style.maxWidth = '90vw';
+                videoContainer.style.zIndex = '9999';
+                videoContainer.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.8)';
+                iframe.style.height = '225px';
+                
+                isFloating = true;
+                
+                // Prevent scroll jump
+                window.scrollTo(0, currentScroll);
+                
+                setTimeout(() => { isTransitioning = false; }, 50);
+            }
+            // Scrolled back up above trigger → Return to normal
+            else if (scrollPosition <= PIP_TRIGGER_POINT && isFloating) {
+                isTransitioning = true;
+                returnToNormal();
+                setTimeout(() => { isTransitioning = false; }, 50);
+            }
+        });
+    </script>
 </body>
 </html>
