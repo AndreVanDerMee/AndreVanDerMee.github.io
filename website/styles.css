@@ -633,7 +633,7 @@ body {
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid rgba(59, 130, 246, 0.1);
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     scroll-snap-align: start;
     display: flex;
@@ -690,7 +690,6 @@ body {
     line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    transition: all 0.3s ease;
     flex: 1;
 }
 
@@ -703,22 +702,27 @@ body {
 }
 
 .see-more-btn {
-    background: none;
-    border: none;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
     color: var(--primary-color);
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 600;
-    padding: 0;
+    padding: 0.6rem 1.5rem;
     margin-top: auto;
     display: block;
-    transition: all 0.3s;
+    transition: all 0.3s ease, opacity 0.5s ease;
+    opacity: 1;
 }
 
 .see-more-btn:hover {
-    color: #60a5fa;
-    text-decoration: underline;
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
+
 
 /* Publications Section */
 .publications {
@@ -1105,6 +1109,27 @@ body {
     50% {
         transform: scale(1.1);
         opacity: 0.5;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
