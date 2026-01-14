@@ -269,24 +269,74 @@ document.querySelectorAll('.scroll-arrow').forEach(arrow => {
     });
 });
 
-// Contact form handling
+// Contact form handling with PHP
 const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Get form values
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    
+    // Show loading state
+    submitButton.textContent = 'Sending...';
+    submitButton.disabled = true;
+    
+    // Get form data
     const formData = new FormData(contactForm);
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-    const company = contactForm.querySelectorAll('input[type="text"]')[1].value;
-    const message = contactForm.querySelector('textarea').value;
     
-    // Here you would typically send the data to a server
-    // For now, we'll just show a success message
-    alert(`Thank you, ${name}! Your message has been received. We'll get back to you at ${email} soon.`);
+    // DEBUG: Log what we're sending
+    console.log('=== FORM DATA DEBUG ===');
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+    console.log('======================');
     
-    // Reset form
-    contactForm.reset();
+    try {
+        // Send to PHP backend - use the exact same path as test-email.php
+        const response = await fetch('send-email.php', {
+            method: 'POST',
+            body: formData
+        });
+        
+        // Log for debugging
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+        
+        // Try to get the response text first to see what we're receiving
+        const responseText = await response.text();
+        console.log('Raw response:', responseText);
+        
+        // Check if response is OK
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // Parse JSON
+        let result;
+        try {
+            result = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('Failed to parse JSON:', parseError);
+            throw new Error('Server returned invalid JSON: ' + responseText.substring(0, 100));
+        }
+        
+        console.log('Parsed result:', result);
+        
+        if (result.success) {
+            alert(result.message);
+            contactForm.reset();
+        } else {
+            alert(result.message || 'Sorry, there was an error sending your message.');
+        }
+    } catch (error) {
+        console.error('Error details:', error);
+        console.error('Error message:', error.message);
+        alert('Sorry, there was an error sending your message. Please try again or contact us directly at info@laixr.ai\n\nError: ' + error.message);
+    } finally {
+        // Restore button state
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    }
 });
 
 // Add parallax effect to hero section
