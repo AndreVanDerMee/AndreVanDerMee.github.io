@@ -1,3 +1,62 @@
+// Publications Data
+const publications = [
+    {
+        year: "2026",
+        title: "title of AI Paper Example",
+        authors: "example, A., author, B.",
+        venue: "example location",
+        tags: ["Publication", "Peer-Reviewed"],
+        url: "https://doi.org/10.1000/example"
+    },
+    {
+        year: "2025",
+        title: "Another Research Paper Example",
+        authors: "researcher, C., scientist, D.",
+        venue: "another location",
+        tags: ["Publication", "Conference"],
+        url: "https://doi.org/10.1000/anotherexample"
+    },  
+    {
+        year: "2024",
+        title: "Sample Study on Medical AI",
+        authors: "medic, E., doctor, F.",
+        venue: "sample venue",
+        tags: ["Publication", "Journal"],
+        url: "https://doi.org/10.1000/samplestudy"
+    },
+    {
+        year: "2023",
+        title: "Initial Findings in XR Surgery",
+        authors: "surgeon, G., innovator, H.",
+        venue: "sample venue",
+        tags: ["Publication", "Workshop"],
+        url: "https://doi.org/10.1000/initialfindings"
+    }
+
+];
+
+// Generate publication items for home page (latest 3)
+function generatePublications(limit = null) {
+    const publicationsList = document.querySelector('.publications-list');
+    if (!publicationsList) return;
+    
+    const pubsToShow = limit ? publications.slice(0, limit) : publications;
+    
+    publicationsList.innerHTML = pubsToShow.map(pub => `
+        <a href="${pub.url}" target="_blank" class="publication-item">
+            <div class="pub-year">${pub.year}</div>
+            <div class="pub-content">
+                <h3>${pub.title}</h3>
+                <p class="pub-authors">${pub.authors}</p>
+                <p class="pub-venue">${pub.venue}</p>
+                <div class="pub-tags">
+                    ${pub.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            </div>
+        </a>
+    `).join('');
+}
+
 // Team Members Data
 const teamMembers = [
     {
@@ -47,6 +106,24 @@ const teamMembers = [
         role: "Technical Physician",
         text: "Laurent studied Technical Medicine, a joint-degree between TU Delft, LUMC, and Erasmus MC. With this interdisciplinary background, he focuses on applied research and the implementation of innovative technologies in cardiothoracic surgery.",
         image: "laurent.jpg"
+    },
+    {
+        name: "BSc. Maurits Eijsman",
+        role: "3D Engineer",
+        text: "Maurits has been a part of LAIXR since september 2024, now since March 2025 as an 3D-engineer involved in the Virtual Reality training projects. He implemented techniques such as 3D-scanning to aim for realistic assets for our training simulations.",
+        image: "maurits.jpeg"
+    },
+    {
+        name: "BSc. Joyce van der Heiden",
+        role: "Allied Health Care Provider",
+        text: "Joyce van der Heiden, joined LAIXR in 2023 at the start of the initiative. She is an allied health care provider specializing in anesthesia. Within LAIXR, she contributes to the validation process of the VR CPR training and the VR simulation for scrub nurses.",
+        image: "joyce.jpeg"
+    },
+    {
+        name: "Lara van der Kooij",
+        role: "Research Assistant",
+        text: "Lara is a medical student who has been contributing to ongoing research projects at LAIXR since 2025. She assists with studies on surgical education and training, including handtracking, learning curve analyses, and the associated systematic review project.",
+        image: "lara.jpeg"
     }
 ];
 
@@ -87,11 +164,15 @@ function generateTeamMembers() {
     });
 }
 
-// Initialize team members when DOM is loaded
+// Initialize team members and publications when DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', generateTeamMembers);
+    document.addEventListener('DOMContentLoaded', () => {
+        generateTeamMembers();
+        generatePublications(3); // Show only latest 3 on home page
+    });
 } else {
     generateTeamMembers();
+    generatePublications(3);
 }
 
 // Mobile Navigation Toggle
@@ -271,15 +352,17 @@ document.querySelectorAll('.scroll-arrow').forEach(arrow => {
 
 // Contact form handling with PHP
 const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    
-    // Show loading state
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        // Show loading state
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
     
     // Get form data
     const formData = new FormData(contactForm);
@@ -333,11 +416,14 @@ contactForm.addEventListener('submit', async (e) => {
         console.error('Error message:', error.message);
         alert('Sorry, there was an error sending your message. Please try again or contact us directly at info@laixr.ai\n\nError: ' + error.message);
     } finally {
-        // Restore button state
+        // Restore button state - critical for iOS
         submitButton.textContent = originalText;
         submitButton.disabled = false;
     }
-});
+    });
+} else {
+    console.error('Contact form not found!');
+}
 
 // Add parallax effect to hero section
 window.addEventListener('scroll', () => {

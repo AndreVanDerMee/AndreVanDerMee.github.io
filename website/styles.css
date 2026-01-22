@@ -744,12 +744,19 @@ body {
     margin-bottom: 1.5rem;
     border: 1px solid rgba(59, 130, 246, 0.1);
     transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .publication-item:hover {
     border-color: var(--primary-color);
     transform: translateX(10px);
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+}
+
+.publication-item:hover .pub-content h3 {
+    color: var(--primary-color);
 }
 
 .pub-year {
@@ -798,6 +805,33 @@ body {
 
 .publications-button {
     text-align: center;
+    margin-top: 3rem;
+}
+
+/* All Publications Page */
+.all-publications-page {
+    padding: 12rem 0 8rem;
+    background: var(--dark-bg);
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--light-text);
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.back-button-container {
+    text-align: center;
+    margin-top: 4rem;
 }
 
 /* About Section */
@@ -954,6 +988,18 @@ body {
 .contact {
     padding: 8rem 0;
     background: var(--dark-bg);
+}
+
+.safari-notice {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    color: #fbbf24;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 700px;
+    font-size: 0.95rem;
 }
 
 .contact-content {
