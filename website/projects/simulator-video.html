@@ -21,6 +21,9 @@
             padding: 1rem 2rem;
             z-index: 100;
             border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .header h1 {
@@ -29,9 +32,8 @@
         }
 
         .back-btn {
-            position: fixed;
-            top: 1.5rem;
-            right: 2rem;
+            position: static;
+            flex-shrink: 0;
             padding: 0.5rem 1rem;
             background: rgba(59, 130, 246, 0.2);
             border: 2px solid #3b82f6;
@@ -40,7 +42,6 @@
             border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s;
-            z-index: 101;
         }
 
         .back-btn:hover {
@@ -58,13 +59,16 @@
             justify-content: center;
             padding-top: 80px;
             padding-bottom: 100px;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         #video-player {
             max-width: 90%;
-            max-height: 85vh;
+            max-height: 100%;
             width: auto;
             height: auto;
+            object-fit: contain;
             display: block;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
@@ -158,8 +162,6 @@
             }
 
             .back-btn {
-                top: 1.2rem;
-                right: 1rem;
                 padding: 0.4rem 0.8rem;
                 font-size: 0.85rem;
             }
@@ -169,9 +171,8 @@
 <body>
     <div class="header">
         <h1>ECMO Surgical Training Simulator</h1>
+        <a href="simulator-info.html" class="back-btn">← Back</a>
     </div>
-    
-    <a href="simulator-info.html" class="back-btn">← Back</a>
 
     <div id="video-container">
         <video id="video-player" controls autoplay loop>
