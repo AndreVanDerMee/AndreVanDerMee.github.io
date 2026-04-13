@@ -2,38 +2,72 @@
 const publications = [
     {
         year: "2026",
-        title: "title of AI Paper Example",
-        authors: "example, A., author, B.",
-        venue: "example location",
+        title: "Objective Assessment of Surgical Skill Using Artificial Intelligence Hand Tracking in Cardiothoracic Training: A Feasibility Study.",
+        authors: "Morsal Atazadah , Mounir Bourass , Samuel A Max , Ivo M Cilon , ... , Edris A F Mahtab",
+        venue: "Oxford acedemic, EACTS.",
+        tags: ["JOURNAL ARTICLE", "Peer-Reviewed"],
+        url: "https://academic.oup.com/icvts/article/41/2/ivag048/8472250"
+    },
+    {
+        year: "2026",
+        title: "Building an Extracorporeal Membrane Oxygenation Digital Twin using High-Resolution Patient Data.",
+        authors: "S.A. Max, M. Bourass, D. van der Mee Mendes, A. van der Mee Mendes, ... E. Mahtab.",
+        venue: "ICVTS 2026, Accepted for publication.",
         tags: ["Publication", "Peer-Reviewed"],
-        url: "https://doi.org/10.1000/example"
+        url: "https://academic.oup.com/icvts/advance-article/doi/10.1093/icvts/ivag047/8490769?login=true"
     },
     {
         year: "2025",
-        title: "Another Research Paper Example",
-        authors: "researcher, C., scientist, D.",
-        venue: "another location",
-        tags: ["Publication", "Conference"],
-        url: "https://doi.org/10.1000/anotherexample"
+        title: "Application of Augmented Reality in Robot-Assisted Mitral Valve Repair Surgery: A Feasibility Study",
+        authors: "Peek JJ, Hildebrandt K, Zhang X, Kharbanda RK, Oudeman MAP, Klautz RJM, Palmen M, Mahtab EAF",
+        venue: "JACC Journals.",
+        tags: ["Publication"],
+        url: "https://journals.sagepub.com/doi/pdf/10.1177/15569845251367418"
     },  
     {
-        year: "2024",
-        title: "Sample Study on Medical AI",
-        authors: "medic, E., doctor, F.",
-        venue: "sample venue",
-        tags: ["Publication", "Journal"],
-        url: "https://doi.org/10.1000/samplestudy"
+        year: "2025",
+        title: "Developing a Systematic Approach for the Implementation of Medical Extended Reality Learning Modules in Cardiothoracic Health Care: Recommendations From an International Expert Group. JACC: Advances, Volume 4, Issue 3, 2025. 2 citations.",
+        authors: "Mahtab EAF, Max SA, Braun J, ... Egorova AD.",
+        venue: "JACC Journals.",
+        tags: ["Publication"],
+        url: "https://www.jacc.org/doi/full/10.1016/j.jacadv.2025.101633"
+    },  
+    {
+        year: "2023",
+        title: "Virtual reality simulation as a training tool for perfusionists in extracorporeal circulation: Establishing face and content validity",
+        authors: "Zaheer U.D. Babar, BSc, EKP, ECCPa ∙ Samuel A. Max, BM, Bch(Oxon)a ∙ Bryan G. Martina, MDb ∙ Rodney A. Rosalia, PhD, MBAa ∙ Jette J. Peek, MSca ∙ Antony van Dijk, BSc, EKPa ∙ Amir H. Sadeghi, MD, PhDa ∙ Edris A.F. Mahtab, MD, PhD",
+        venue: "JTCVS",
+        tags: ["Publication"],
+        url: "https://www.jtcvstechniques.org/article/S2666-2507(23)00198-0/fulltext"
     },
     {
         year: "2023",
-        title: "Initial Findings in XR Surgery",
-        authors: "surgeon, G., innovator, H.",
-        venue: "sample venue",
-        tags: ["Publication", "Workshop"],
-        url: "https://doi.org/10.1000/initialfindings"
+        title: "Virtual Reality Simulator versus Conventional Advanced Life Support Training for Cardiopulmonary Resuscitation Post-Cardiac Surgery: A Randomized Controlled Trial",
+        authors: "JJ Peek, SA Max, W Bakhuis, IC Huig, RA Rosalia, AH Sadeghi, EAF Mahtab",
+        venue: "MDPI",
+        tags: ["Publication"],
+        url: ""
+    },
+        {
+        year: "2022",
+        title: "Current and future applications of virtual reality technology for cardiac interventions. Nature Reviews Cardiology 19(12):1-2. 41 citations.",
+        authors: "Mahtab EAF & Egorova AD",
+        venue: "Nature",
+        tags: ["Publication"],
+        url: ""
     }
 
 ];
+/*
+{
+    year: "2023",
+    title: "",
+    authors: "",
+    venue: "",
+    tags: ["Publication"],
+    url: ""
+},
+*/
 
 // Generate publication items for home page (latest 3)
 function generatePublications(limit = null) {
@@ -114,6 +148,24 @@ const teamMembers = [
         image: "maurits.jpeg"
     },
     {
+        name: "Abdou Mostafa",
+        role: "Software Engineer",
+        text: "Abdou Mostafa , A Senior Software Engineer with +5 years of experience in Simulation, Interactive solutions.",
+        image: "abdu.jpeg"
+    },
+    {
+        name: "Simona",
+        role: "VR Developer",
+        text: "Simona is a VR developer with a few years of experience. She focuses on building immersive VR training applications, working on immersive gameplay and interactive UI/UX systems, and combines technical implementation with user-centered design to create engaging and educational VR experiences.",
+        image: "simona.jpeg"
+    },
+    {
+        name: "BSc. Omar Fawzy",
+        role: "Data Scientist",
+        text: "Omar is a Data Science intern at LAIXR, contributing to projects that apply data analysis and machine learning to improve healthcare operations. He has worked on predicting operating room procedure durations to support more efficient scheduling. For his master’s thesis, he is now developing multimodal approaches that combine multiple data sources to generate insights for clinical and operational decision-making.",
+        image: "omar.jpeg"
+    },
+    {   
         name: "BSc. Joyce van der Heiden",
         role: "Allied Health Care Provider",
         text: "Joyce van der Heiden, joined LAIXR in 2023 at the start of the initiative. She is an allied health care provider specializing in anesthesia. Within LAIXR, she contributes to the validation process of the VR CPR training and the VR simulation for scrub nurses.",
