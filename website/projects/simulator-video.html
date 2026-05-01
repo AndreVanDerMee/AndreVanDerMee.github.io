@@ -188,7 +188,7 @@
 
     <div class="video-switcher">
         <button class="video-btn active" id="ecmo-btn" onclick="switchVideo('ecmo')">ECMO Video</button>
-        <button class="video-btn" id="ecc-btn" onclick="switchVideo('ecc')" disabled>ECC Video (Coming Soon)</button>
+        <button class="video-btn" id="ecc-btn" onclick="switchVideo('ecc')">ECC Video</button>
     </div>
 
     <script>
@@ -203,52 +203,34 @@
         };
 
         function switchVideo(type) {
-            if (type === 'ecc') {
-                // Check if ECC video exists
-                checkVideoExists(videos.ecc).then(exists => {
-                    if (exists) {
-                        loadVideo(type);
-                    } else {
-                        alert('ECC video is not available yet. Coming soon!');
-                    }
-                });
-            } else {
-                loadVideo(type);
-            }
+            loadVideo(type);
         }
 
         function loadVideo(type) {
             loading.style.display = 'block';
             const wasPlaying = !videoPlayer.paused;
-            
-            videoPlayer.src = videos[type];
-            videoPlayer.load();
-            
-            videoPlayer.addEventListener('loadeddata', function() {
+
+            videoPlayer.addEventListener('canplay', function() {
                 loading.style.display = 'none';
                 if (wasPlaying) {
                     videoPlayer.play();
                 }
             }, { once: true });
 
+            videoPlayer.addEventListener('error', function() {
+                loading.style.display = 'none';
+                alert('Failed to load video. Make sure the file has been uploaded to the server.');
+            }, { once: true });
+
+            videoPlayer.src = videos[type];
+            videoPlayer.load();
+
             // Update button states
             ecmoBtn.classList.toggle('active', type === 'ecmo');
             eccBtn.classList.toggle('active', type === 'ecc');
         }
 
-        function checkVideoExists(url) {
-            return fetch(url, { method: 'HEAD' })
-                .then(response => response.ok)
-                .catch(() => false);
-        }
 
-        // Check if ECC video exists on page load
-        checkVideoExists(videos.ecc).then(exists => {
-            if (exists) {
-                eccBtn.disabled = false;
-                eccBtn.textContent = 'ECC Video';
-            }
-        });
     </script>
 </body>
 </html>
