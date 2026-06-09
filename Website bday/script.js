@@ -7,41 +7,44 @@
 // Set the year here. Dates are local time, unlocking at 00:00 on the day.
 const YEAR = 2026;
 
+// TEST MODE: Set to true to unlock all presents for testing
+const TEST_MODE = true;
+
 const PRESENTS = [
   {
     day: "Wednesday",
     date: new Date(YEAR, 5, 10, 0, 0, 0), // June 10
     dateLabel: "June 10",
     gift: "Diesel Hoodie",
-    hint: "images/hint-wednesday.jpg",
+    hint: "images/hint-wednesday.jpeg",
   },
   {
     day: "Thursday",
     date: new Date(YEAR, 5, 11, 0, 0, 0), // June 11
     dateLabel: "June 11",
     gift: "Raffaello",
-    hint: "images/hint-thursday.jpg",
+    hint: "images/hint-thursday.jpeg",
   },
   {
     day: "Friday",
     date: new Date(YEAR, 5, 12, 0, 0, 0), // June 12
     dateLabel: "June 12",
     gift: "1x DPA",
-    hint: "images/hint-friday.jpg",
+    hint: "images/hint-friday.jpeg",
   },
   {
     day: "Saturday",
     date: new Date(YEAR, 5, 13, 0, 0, 0), // June 13
     dateLabel: "June 13",
     gift: "Disneyland Paris",
-    hint: "images/hint-saturday.jpg",
+    hint: "images/hint-saturday.jpeg",
   },
   {
     day: "Sunday",
     date: new Date(YEAR, 5, 14, 0, 0, 0), // June 14
     dateLabel: "June 14",
-    gift: "Nice Lunch",
-    hint: "images/hint-sunday.jpg",
+    gift: "A nice picknic in the sun",
+    hint: "images/hint-sunday.jpeg",
   },
 ];
 
@@ -78,6 +81,7 @@ function getNow() {
 }
 
 function isUnlocked(present, now) {
+  if (TEST_MODE) return true; // All presents unlocked in test mode
   return now.getTime() >= present.date.getTime();
 }
 
@@ -150,16 +154,26 @@ function nudgeLocked(i) {
 
 // --- Reveal overlay ---------------------------------------------------------
 const overlay = document.getElementById("overlay");
+const revealCardContainer = document.getElementById("revealCardContainer");
 const revealDay = document.getElementById("revealDay");
+const revealDayBack = document.getElementById("revealDayBack");
 const revealGift = document.getElementById("revealGift");
 const hintImage = document.getElementById("hintImage");
 const closeBtn = document.getElementById("closeBtn");
+const flipBtn = document.getElementById("flipBtn");
 
 function openReveal(i) {
   const present = PRESENTS[i];
-  revealDay.textContent = present.day + " \u00b7 " + present.dateLabel;
+  const dayLabel = present.day + " \u00b7 " + present.dateLabel;
+  
+  // Set day on both sides
+  revealDay.textContent = dayLabel;
+  revealDayBack.textContent = dayLabel;
+  
+  // Set gift name
   revealGift.textContent = present.gift;
 
+  // Load hint image
   hintImage.innerHTML = "";
   const img = new Image();
   img.alt = "Hint for " + present.gift;
@@ -175,6 +189,10 @@ function openReveal(i) {
   };
   img.src = present.hint;
 
+  // Reset to front side
+  revealCardContainer.classList.remove("flipped");
+  
+  // Show overlay
   overlay.classList.add("show");
   overlay.setAttribute("aria-hidden", "false");
 }
@@ -182,8 +200,17 @@ function openReveal(i) {
 function closeReveal() {
   overlay.classList.remove("show");
   overlay.setAttribute("aria-hidden", "true");
+  // Reset flip state after animation
+  setTimeout(() => {
+    revealCardContainer.classList.remove("flipped");
+  }, 300);
 }
 
+function flipCard() {
+  revealCardContainer.classList.toggle("flipped");
+}
+
+flipBtn.addEventListener("click", flipCard);
 closeBtn.addEventListener("click", closeReveal);
 overlay.addEventListener("click", (e) => {
   if (e.target === overlay) closeReveal();

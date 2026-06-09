@@ -39,15 +39,26 @@
 
   <!-- Reveal overlay -->
   <div class="overlay" id="overlay" aria-hidden="true">
-    <div class="reveal-card" role="dialog" aria-modal="true" aria-labelledby="revealGift">
+    <div class="reveal-card-container" id="revealCardContainer" role="dialog" aria-modal="true" aria-labelledby="revealGift">
       <button class="close-btn" id="closeBtn" aria-label="Close">&times;</button>
-      <p class="reveal-day" id="revealDay">Wednesday</p>
-      <div class="reveal-gift-wrap">
-        <h2 class="reveal-gift" id="revealGift">Gift</h2>
+      
+      <!-- Front: Hint -->
+      <div class="reveal-card reveal-card-front">
+        <p class="reveal-day" id="revealDay">Wednesday</p>
+        <div class="reveal-hint">
+          <p class="hint-label">Your hint</p>
+          <div class="hint-image" id="hintImage"></div>
+        </div>
+        <button class="flip-btn" id="flipBtn">Tap to reveal gift 🎁</button>
       </div>
-      <div class="reveal-hint">
-        <p class="hint-label">Your hint</p>
-        <div class="hint-image" id="hintImage"></div>
+      
+      <!-- Back: Gift -->
+      <div class="reveal-card reveal-card-back">
+        <p class="reveal-day" id="revealDayBack">Wednesday</p>
+        <div class="reveal-gift-wrap">
+          <h2 class="reveal-gift" id="revealGift">Gift</h2>
+        </div>
+        <p class="hint-message">Enjoy your surprise! 🎉</p>
       </div>
     </div>
   </div>

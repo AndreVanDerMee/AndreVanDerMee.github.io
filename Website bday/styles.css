@@ -291,23 +291,72 @@ body {
 }
 .overlay.show { opacity: 1; pointer-events: auto; }
 
-.reveal-card {
+.reveal-card-container {
   position: relative;
   width: 100%;
   max-width: 380px;
+  height: 560px;
   max-height: 88vh;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.reveal-card-container.flipped .reveal-card-front {
+  transform: rotateY(180deg);
+}
+
+.reveal-card-container.flipped .reveal-card-back {
+  transform: rotateY(0deg);
+}
+
+.reveal-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: linear-gradient(170deg, #0d2b4a, #06182e);
   border: 1px solid rgba(251, 146, 60, 0.35);
   border-radius: 26px;
-  padding: 30px 24px 26px;
+  padding: 60px 24px 26px;
   text-align: center;
   box-shadow: var(--shadow);
-  transform: translateY(18px) scale(0.96);
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.overlay.show .reveal-card { transform: translateY(0) scale(1); }
+
+.reveal-card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+  justify-content: center;
+  gap: 0;
+}
+
+.reveal-card-back {
+  transform: rotateY(-180deg);
+  justify-content: center;
+  gap: 12px;
+}
+
+.overlay.show .reveal-card {
+  animation: cardEntry 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes cardEntry {
+  from { 
+    opacity: 0;
+    transform: translateY(18px) scale(0.96) rotateY(0deg);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+  }
+}
 
 .close-btn {
   position: absolute;
@@ -322,6 +371,31 @@ body {
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
+  z-index: 10;
+}
+
+.flip-btn {
+  margin-top: 24px;
+  padding: 14px 28px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream);
+  background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flip-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.45);
+}
+
+.flip-btn:active {
+  transform: translateY(0);
 }
 
 .reveal-day {
@@ -330,15 +404,21 @@ body {
   font-size: 12px;
   font-weight: 600;
   color: var(--orange-400);
-  margin: 0;
+  margin: 0 0 16px 0;
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  right: 24px;
 }
 
-.reveal-gift-wrap { margin: 8px 0 20px; }
+.reveal-gift-wrap { 
+  margin: 8px 0 0;
+}
 
 .reveal-gift {
   font-family: "Fraunces", serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 38px;
   margin: 0;
   background: linear-gradient(100deg, var(--orange-400), var(--orange-200), var(--blue-300));
   -webkit-background-clip: text;
@@ -346,14 +426,25 @@ body {
   color: transparent;
 }
 
-.reveal-hint { margin-top: 6px; }
+.reveal-hint { 
+  margin-top: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hint-message {
+  margin-top: 8px;
+  font-size: 17px;
+  color: var(--orange-200);
+  font-weight: 500;
+}
 
 .hint-label {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(255, 247, 237, 0.55);
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .hint-image {
@@ -362,6 +453,7 @@ body {
   border: 1px solid rgba(109, 179, 230, 0.3);
   background: rgba(255, 255, 255, 0.04);
   min-height: 180px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
