@@ -8,7 +8,7 @@
 const YEAR = 2026;
 
 // TEST MODE: Set to true to unlock all presents for testing
-const TEST_MODE = true;
+const TEST_MODE = false;
 
 const PRESENTS = [
   {
