@@ -77,22 +77,26 @@ Opmerking: ${formData.opmerking}`;
             // OPTIE 3: WHATSAPP (DIRECT NAAR WHATSAPP)
             // Uncomment onderstaande regels om via WhatsApp te versturen:
             
-            const whatsappMessage = `*Nieuwe Aanmelding Gratis Proefles*%0A%0A` +
+            const whatsappMessage = `*Nieuwe Aanmelding*%0A%0A` +
                 `• Naam: ${formData.voornaam} ${formData.achternaam}%0A` +
                 `• Email: ${formData.email}%0A` +
                 `• Telefoon: ${formData.telefoon}%0A` +
                 `• Lestype: ${formData.lestype}%0A` +
                 `• Opmerking: ${formData.opmerking || 'Geen opmerking'}`;
             
-            const whatsappLink = `https://wa.me/31654293762?text=${whatsappMessage}`;
-            
-            setTimeout(() => {
-                window.open(whatsappLink, '_blank');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                form.reset();
-                alert('Je wordt doorgestuurd naar WhatsApp om je aanmelding te voltooien!');
-            }, 1000);
+            const whatsappLink = `https://wa.me/31645040790?text=${whatsappMessage}`;
+
+            // Open WhatsApp direct binnen de user-gesture, anders blokkeert Safari de pop-up
+            const whatsappWindow = window.open(whatsappLink, '_blank');
+
+            // Val terug op navigatie in hetzelfde tabblad als de pop-up toch geblokkeerd wordt
+            if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed === 'undefined') {
+                window.location.href = whatsappLink;
+            }
+
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            form.reset();
             
             
             // OPTIE 4: NETLIFY FORMS (ALS JE WEBSITE OP NETLIFY STAAT)

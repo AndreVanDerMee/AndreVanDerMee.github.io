@@ -460,6 +460,53 @@ body {
     color: var(--gray);
 }
 
+/* ===== CITIES SECTION ===== */
+.cities {
+    padding: var(--spacing-xl) 0;
+    background: var(--light-gray);
+}
+
+.cities .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cities .section-title {
+    text-align: center;
+}
+
+.cities-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
+    max-width: 900px;
+    margin: var(--spacing-md) auto 0;
+}
+
+.cities-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--white);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cities-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.cities-list li i {
+    color: var(--primary-color);
+}
+
 /* ===== PACKAGES SECTION ===== */
 .packages {
     padding: var(--spacing-xl) 0;

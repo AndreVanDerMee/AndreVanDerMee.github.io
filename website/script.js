@@ -102,7 +102,7 @@ const teamMembers = [
     {
         name: "Dr. Samuel Max",
         role: "ANIOS and Senior Researcher",
-        text: "Dr. Max founded LAIXR together with Edris Mahtab and specializes creating a digital twin of cardiothoracic surgery patients. He posseses knowlowdge on both enginering and the medical field",
+        text: "Dr. Max founded LAIXR together with Edris Mahtab and specializes creating a digital twin of cardiothoracic surgery patients. He posseses knowledge on both enginering and the medical field",
         image: "sam.jpg"
     },
     {

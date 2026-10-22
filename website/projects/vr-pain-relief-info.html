@@ -169,6 +169,49 @@
             color: var(--gray-text);
         }
 
+        .partner-section {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .partner-section .partner-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .partner-section .partner-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .partner-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--light-text);
+        }
+
+        .partner-section p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .partner-section p:last-child {
+            margin-bottom: 0;
+        }
+
         @media (max-width: 768px) {
             .vr-title {
                 font-size: 2.5rem;
@@ -193,6 +236,17 @@
 
             .stat-number {
                 font-size: 2.5rem;
+            }
+
+            .partner-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .partner-section .partner-logo {
+                max-width: 220px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -274,6 +328,18 @@
                 <div class="feature-card">
                     <h3>Easy Implementation</h3>
                     <p>Simple, portable VR solution that can be easily integrated into existing clinical workflows without major infrastructure changes.</p>
+                </div>
+            </div>
+
+            <!-- Partner Section -->
+            <div class="partner-section">
+                <div class="partner-logo">
+                    <img src="../images/partners/NGNG_logo ZW.jpg" alt="No Guts No Glory logo">
+                </div>
+                <div class="partner-text">
+                    <h2>In Partnership with No Guts No Glory</h2>
+                    <p>This project is made possible together with our main partner, <strong>No Guts No Glory</strong>. They help us record immersive 360° concerts that are brought directly to lung cancer patients through virtual reality.</p>
+                    <p>By transforming live music into a calming, distraction-based therapy, No Guts No Glory enables us to reduce pain and anxiety at the bedside, giving patients moments of relief.</p>
                 </div>
             </div>
 
